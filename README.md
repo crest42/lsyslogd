@@ -1,0 +1,2 @@
+# lsyslogd
+Lightweight Syslog Daemon
