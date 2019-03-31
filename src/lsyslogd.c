@@ -35,7 +35,7 @@ static int add_output(syslog_init_f _init, syslog_write_f _write) {
     return curr;
 }
 
-int init(void) {
+int lsyslogd_init(void) {
     memset(outputs, 0, sizeof(outputs));
     #ifdef FEATURE_OUTPUT_FILE
     add_output(syslog_output_file_init, syslog_output_file_write);
@@ -52,7 +52,7 @@ int init(void) {
     return 0;
 }
 
-int run(void) {
+int lsyslogd_run(void) {
     input._init(NULL);
 
     printf("startup complete looping\n");

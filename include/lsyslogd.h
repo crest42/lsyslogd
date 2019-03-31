@@ -2,7 +2,6 @@
 #define LSYSLOGD_H
 
 #define SYSLOG_NILVALUE "-"
-#define SYSLOG_VERSION "1"
 #define MAX_APP_NAME (32)
 #define HOSTNAME_MAX_LEN (255) //https://tools.ietf.org/html/rfc1034
 #define MAX_OUTPUTS (4)
@@ -21,6 +20,6 @@ typedef struct syslog_ouput {
     syslog_write_f _write;
 } syslog_ouput_t;
 
-int init(void);
-int run(void);
+int lsyslogd_init(void);
+int lsyslogd_run(void);
 #endif //LSYSLOGD_H
