@@ -1,4 +1,3 @@
-#define FEATURE_INPUT_UNIX_SOCK
 #ifdef FEATURE_INPUT_UNIX_SOCK
 #include "../../include/lsyslogd.h"
 #include <sys/socket.h>
