@@ -8,6 +8,7 @@
 #include "../../include/lsyslogd.h"
 #include <inttypes.h>
 #include <stdio.h>
+#include <string.h>
 #include "msg.h"
 #include "thread.h"
 
@@ -21,16 +22,15 @@ static int syslog_riot_ipc_read(char *buf, int len)
 {
     msg_t msg;
     msg_receive(&msg);
-    int len = MIN(len,msg.content.value);
-    strncpy(buf,msg.content.ptr,len);
-    return len;
+    int min = MIN((uint32_t)len,msg.content.value);
+    strncpy(buf,msg.content.ptr,min);
+    return min;
 }
 
 static int syslog_riot_ipc_init(char *opt) {
-    msg_t msg_req, msg_resp;
-    msg_resp.content.value = 0;
+    (void)opt;
     rcv_pid = thread_create(rcv_stack, sizeof(rcv_stack),
-                            THREAD_PRIORITY_MAIN - 1, 0, rcv, NULL, "rcv");
+                            THREAD_PRIORITY_MAIN - 1, 0, syslog_riot_ipc_read, NULL, "syslog_riot_ipc_read");
     msg_init_queue(rcv_queue, RCV_QUEUE_SIZE);
     return 0;
 }
