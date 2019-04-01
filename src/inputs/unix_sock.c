@@ -35,7 +35,7 @@ static int syslog_unix_sock_init(char *opt) {
     return 0;
 }
 
-syslog_input_t input = {._read = syslog_unix_sock_read, ._init = syslog_unix_sock_init};
+syslog_input_t unix_sock_input = {._read = syslog_unix_sock_read, ._init = syslog_unix_sock_init};
 
 #else
 typedef int dont_be_pendantic;

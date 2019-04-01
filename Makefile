@@ -3,7 +3,7 @@ PHONY = all test
 WFLAGS := -Wall -Wextra -Werror
 
 all:
-	$(CC) src/*.c src/outputs/*.c src/inputs/*.c -o lsyslogd
+	$(CC) -DFEATURE_INPUT_UNIX_SOCK src/*.c src/outputs/*.c src/inputs/*.c -o lsyslogd
 
 fresh: clean dep all
 

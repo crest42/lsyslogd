@@ -24,7 +24,7 @@ int syslog_output_remote_init(char *opt) {
     remote.sin6_port = htons(PORT);
     if ((ret = inet_pton(AF_INET6, opt, &remote.sin6_addr)) != 1)
     {
-        printf("error in inet_pton %d\n",ret);
+        printf("error in inet_pton for address \"%s\" return: %d\n",opt,ret);
         return -1;
     }
     if(connect(fd, (const struct sockaddr *)&remote, sizeof(remote)) != 0) {
