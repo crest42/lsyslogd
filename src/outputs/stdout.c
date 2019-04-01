@@ -7,6 +7,7 @@ int syslog_output_stdout_init(char *opt) {
 }
 
 int syslog_output_stdout_write(char *buf, int size) {
+    (void)size;
     printf("%s\n", buf);
     return 0;
 }
