@@ -41,14 +41,6 @@ static syslog_input_t *register_input(syslog_input_t *i) {
 int lsyslogd_init(syslog_input_t *input) {
     register_input(input);
     memset(outputs, 0, sizeof(outputs));
-    #ifdef FEATURE_OUTPUT_FILE
-    register_output(syslog_output_file_init, syslog_output_file_write);
-    syslog_output_file_init("./a.out");
-    #endif
-    #ifdef FEATURE_OUTPUT_REMOTE
-    register_output(syslog_output_remote_init, syslog_output_remote_write);
-    syslog_output_remote_init("fe80::8a18:5a0f:45b7:1739%wlo1");
-    #endif
     #ifdef FEATURE_OUTPUT_STDOUT
     register_output(syslog_output_stdout_init, syslog_output_stdout_write);
     syslog_output_stdout_init(NULL);
