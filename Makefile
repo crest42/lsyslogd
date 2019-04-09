@@ -1,9 +1,9 @@
 PHONY = all test
 .DEFAULT_GOAL := all
 WFLAGS := -Wall -Wextra -Werror
-
+INCLUDES := -I./include/
 all:
-	$(CC) -DFEATURE_INPUT_UNIX_SOCK src/*.c src/outputs/*.c src/inputs/*.c -o lsyslogd
+	$(CC) $(INCLUDES) -DFEATURE_INPUT_UNIX_SOCK src/*.c src/outputs/*.c src/inputs/*.c -o lsyslogd
 
 fresh: clean dep all
 

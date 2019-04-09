@@ -1,6 +1,6 @@
 #define FEATURE_OUTPUT_FILE
 #ifdef FEATURE_OUTPUT_FILE
-#include "../../include/outputs/file.h"
+#include "outputs/file.h"
 #include <stdio.h>
 #include <assert.h>
 

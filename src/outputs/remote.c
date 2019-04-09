@@ -1,6 +1,6 @@
 #define FEATURE_OUTPUT_REMOTE
 #ifdef FEATURE_OUTPUT_REMOTE
-#include "../../include/outputs/remote.h"
+#include "outputs/remote.h"
 #include <string.h>
 #include <stdio.h>
 #include <errno.h>

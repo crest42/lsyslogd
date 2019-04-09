@@ -1,7 +1,6 @@
 #include "../include/lsyslogd.h"
 #include <stdio.h>
 #include <string.h>
-#include <assert.h>
 #define FEATURE_OUTPUT_FILE
 #define FEATURE_OUTPUT_REMOTE
 #define FEATURE_OUTPUT_STDOUT
@@ -28,7 +27,6 @@ int curr = 0;
 
 static int register_output(syslog_init_f _init, syslog_write_f _write) {
     printf("add output %d\n", curr);
-    assert(curr < MAX_OUTPUTS);
     outputs[curr]._init = _init;
     outputs[curr]._write = _write;
     curr++;
