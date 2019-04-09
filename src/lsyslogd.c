@@ -1,21 +1,17 @@
-#include "../include/lsyslogd.h"
+#include "lsyslogd.h"
 #include <stdio.h>
 #include <string.h>
-#define FEATURE_OUTPUT_FILE
-#define FEATURE_OUTPUT_REMOTE
-#define FEATURE_OUTPUT_STDOUT
-#define FEATURE_READ_DEV_LOG
 
-#ifdef FEATURE_OUTPUT_FILE
-#include "../include/outputs/file.h"
+#ifdef LSYSLOGD_FEATURE_OUTPUT_FILE
+#include "outputs/file.h"
 #endif
 
-#ifdef FEATURE_OUTPUT_REMOTE
-#include "../include/outputs/remote.h"
+#ifdef LSYSLOGD_FEATURE_OUTPUT_REMOTE
+#include "outputs/remote.h"
 #endif
 
-#ifdef FEATURE_OUTPUT_STDOUT
-#include "../include/outputs/stdout.h"
+#ifdef LSYSLOGD_FEATURE_OUTPUT_STDOUT
+#include "outputs/stdout.h"
 
 #endif
 
@@ -45,7 +41,7 @@ int lsyslogd_init(syslog_input_t *input, char *opt) {
     input->_init(opt);
     memset(outputs, 0, sizeof(outputs));
 
-    #ifdef FEATURE_OUTPUT_STDOUT
+    #ifdef LSYSLOGD_FEATURE_OUTPUT_STDOUT
     lsyslogd_register_output(syslog_output_stdout_init, syslog_output_stdout_write);
     syslog_output_stdout_init(NULL);
     #endif

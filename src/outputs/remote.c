@@ -36,5 +36,6 @@ int syslog_output_remote_init(char *opt) {
 int syslog_output_remote_write(char *buf, int size) {
     return sendto(fd, buf, size, 0, (const struct sockaddr *)&remote, sizeof(remote));
 }
-
+#else
+typedef int dont_pe_pedantic;
 #endif //FEATURE_OUTPUT_REMOTE

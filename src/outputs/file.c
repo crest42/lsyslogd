@@ -29,4 +29,6 @@ int syslog_output_file_write(char *buf, int size) {
     return ret;
 }
 
+#else
+typedef int dont_pe_pedantic;
 #endif //FEATURE_OUTPUT_FILE

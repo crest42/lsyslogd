@@ -11,4 +11,6 @@ int syslog_output_stdout_write(char *buf, int size) {
     return 0;
 }
 
+#else
+typedef int dont_pe_pedantic;
 #endif //FEATURE_OUTPUT_STDOUT
