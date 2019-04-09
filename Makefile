@@ -15,6 +15,6 @@ fresh: clean dep all
 clean:
 	rm -rf lsyslogd test
 
-test: clean all
-	$(CC) tests/*.c -o test
+test: all
+	$(CC) $(INCLUDES) tests/*.c -o test
 	./test

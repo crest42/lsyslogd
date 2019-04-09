@@ -26,6 +26,9 @@ int syslog_output_remote_init(char *opt) {
         printf("error in inet_pton for address \"%s\" return: %d\n",opt,ret);
         return -1;
     }
+    if (IN6_IS_ADDR_LINKLOCAL(&remote.sin6_addr)) {
+        remote.sin6_scope_id = 5;
+    }
     if(connect(fd, (const struct sockaddr *)&remote, sizeof(remote)) != 0) {
         perror("Error on connect");
         return -1;

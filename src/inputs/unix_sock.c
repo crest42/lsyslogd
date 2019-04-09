@@ -1,5 +1,5 @@
 #ifdef LSYSLOGD_FEATURE_INPUT_UNIX_SOCK
-#include "../../include/lsyslogd.h"
+#include "lsyslogd.h"
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <stdlib.h>
@@ -29,8 +29,8 @@ static int syslog_unix_sock_init(char *opt) {
     addr.sun_family = AF_UNIX;
     strncpy(addr.sun_path, "/dev/log", sizeof(addr.sun_path) - 1);
     if (bind(fd, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
-			perror("bind failed");
-	}
+      perror("lsyslogd_input_unix_sock: bind failed");
+    }
     chmod("/dev/log", 0666);
     return 0;
 }

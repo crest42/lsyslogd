@@ -1,7 +1,5 @@
 #include "lsyslogd.h"
-#include <stdio.h>
 #include <string.h>
-
 #ifdef LSYSLOGD_FEATURE_OUTPUT_FILE
 #include "outputs/file.h"
 #endif
@@ -50,12 +48,11 @@ int lsyslogd_init(syslog_input_t *input, char *opt) {
 }
 
 int lsyslogd_run(void) {
-    printf("startup complete looping\n");
     while (1)
     {
         int read = input->_read(log_buf, sizeof(log_buf));
+        log_buf[read] = 0;
         if(read < 0) {
-            printf("Error on read input %d\n", read);
             return read;
         }
         for (int i = 0; i<curr;i++) {
