@@ -1,5 +1,4 @@
-#define FEATURE_OUTPUT_FILE
-#ifdef FEATURE_OUTPUT_FILE
+#ifdef LSYSLOGD_FEATURE_OUTPUT_FILE
 #include "outputs/file.h"
 #include <stdio.h>
 #include <assert.h>

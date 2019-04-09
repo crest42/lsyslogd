@@ -1,5 +1,4 @@
-#define FEATURE_OUTPUT_STDOUT
-#ifdef FEATURE_OUTPUT_STDOUT
+#ifdef LSYSLOGD_FEATURE_OUTPUT_STDOUT
 #include <stdio.h>
 int syslog_output_stdout_init(char *opt) {
     (void)opt;

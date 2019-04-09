@@ -1,5 +1,4 @@
-#define FEATURE_OUTPUT_REMOTE
-#ifdef FEATURE_OUTPUT_REMOTE
+#ifdef LSYSLOGD_FEATURE_OUTPUT_REMOTE
 #include "outputs/remote.h"
 #include <string.h>
 #include <stdio.h>

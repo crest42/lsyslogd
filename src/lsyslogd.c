@@ -30,7 +30,7 @@ static syslog_input_t *register_input(syslog_input_t *i) {
     return input;
 }
 
-int register_output(syslog_init_f _init, syslog_write_f _write) {
+int lsyslogd_register_output(syslog_init_f _init, syslog_write_f _write) {
     if(curr < MAX_OUTPUTS) {
         outputs[curr]._init = _init;
         outputs[curr]._write = _write;
@@ -46,7 +46,7 @@ int lsyslogd_init(syslog_input_t *input, char *opt) {
     memset(outputs, 0, sizeof(outputs));
 
     #ifdef FEATURE_OUTPUT_STDOUT
-    register_output(syslog_output_stdout_init, syslog_output_stdout_write);
+    lsyslogd_register_output(syslog_output_stdout_init, syslog_output_stdout_write);
     syslog_output_stdout_init(NULL);
     #endif
 
