@@ -38,8 +38,9 @@ static syslog_input_t *register_input(syslog_input_t *i) {
     return input;
 }
 
-int lsyslogd_init(syslog_input_t *input) {
+int lsyslogd_init(syslog_input_t *input, char *opt) {
     register_input(input);
+    input->_init(opt);
     memset(outputs, 0, sizeof(outputs));
     #ifdef FEATURE_OUTPUT_STDOUT
     register_output(syslog_output_stdout_init, syslog_output_stdout_write);
@@ -49,7 +50,6 @@ int lsyslogd_init(syslog_input_t *input) {
 }
 
 int lsyslogd_run(void) {
-    input->_init(NULL);
     printf("startup complete looping\n");
     while (1)
     {

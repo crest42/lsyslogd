@@ -20,6 +20,6 @@ typedef struct syslog_ouput {
     syslog_write_f _write;
 } syslog_ouput_t;
 
-int lsyslogd_init(syslog_input_t *input);
+int lsyslogd_init(syslog_input_t *input,char *opt);
 int lsyslogd_run(void);
 #endif //LSYSLOGD_H
